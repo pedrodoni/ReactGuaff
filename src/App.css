@@ -59,3 +59,47 @@ li a{
   align-items: center;
 
 }
+.cntPRDR{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cardsPRDR{
+  background-image: linear-gradient(45deg, #833ab4, #fd1d1d);
+  border-radius: 25% 5%;
+  margin: 5%;
+}
+.cardsPRDR img{
+  width: 100%;
+  margin-top: 4%;
+}
+.imgCard{
+  width: 20rem;
+}
+.cardDetails{
+  text-align: center;
+  margin:2rem;
+  color: white;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  
+  .loadingImg {
+    width: 150px;
+    animation: App-logo-spin infinite 0.7s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
