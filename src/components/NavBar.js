@@ -5,7 +5,7 @@ function Navbar (){
     return(
         <div className="layout">
             <div>
-            <a href="#!"><img src="./images/logo4.png"/></a>
+            <Link to={'/'}><img src="./images/logo4.png"/></Link>
             </div>
             <div className="grow3">
                 <ul className="ulHeader">
