@@ -27,6 +27,11 @@ useEffect(()=>{
     function loading(){
         return 
      }
+     if(isLoading){
+      return(
+         <Loading/>
+      )
+     }
   return (
     <div>
         
