@@ -5,7 +5,7 @@ function Navbar (){
     return(
         <div className="layout">
             <div>
-            <Link to={'/'}><img src="./images/logo4.png"/></Link>
+            <Link to={'/'}><img src="../images/logo4.png"/></Link>
             </div>
             <div className="grow3">
                 <ul className="ulHeader">
@@ -13,11 +13,14 @@ function Navbar (){
                         <Link to={'/'}>Home</Link>
                     </li>
                     <li>
-                        <Link to={'/cats'}>Cat Store</Link>
+                        <Link to={'/item/Cats'}>Cat Store</Link>
                     </li>
                     <li>
-                        <Link to={'/dogs'}>Dog Store</Link>
-                    </li>                  
+                        <Link to={'/item/Dogs'}>Dog Store</Link>
+                    </li>   
+                    <li>
+                        <Link to={'/item'}>All Products</Link>
+                    </li>                 
                 </ul>
             </div>
             

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import Button from 'react-bootstrap/Button'
 
- const ItemCount = ({stock, onAdd, initial}) => {
+ const ItemCount = ({stock, more, initial}) => {
     
     const [items, setItems]= useState(initial);
 
@@ -30,7 +30,7 @@ import Button from 'react-bootstrap/Button'
             <Button onClick={restarItem} variant='outline-light'>-</Button>
         </div>
         <div>
-            <Button onClick={()=>onAdd(items)} variant='outline-light'>Añadir al Carrito</Button>
+            <Button onClick={()=>more(items)} variant='outline-light'>Añadir al Carrito</Button>
         </div>
     </div>
   )

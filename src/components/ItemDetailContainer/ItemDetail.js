@@ -4,7 +4,7 @@ import ItemCount from '../ItemCount/ItemCount'
 
 
 const ItemDetail = ({alimento}) => {
-    const onAdd = (items)=>{
+    const more = (items)=>{
         if(items===0){
             Swal.fire("Debes Elegir una cantidad valida")
         } else{
@@ -25,7 +25,9 @@ const ItemDetail = ({alimento}) => {
         <div className='layoutDETAIL'>
         <p>{alimento.desc}</p>
         </div>    
-        <ItemCount initial= {1} stock={alimento.stock} onAdd={onAdd}/>
+        <div className='addCart' >
+            <ItemCount initial= {1} stock={alimento.stock} more={more}/>
+        </div>
     </div>
     
   )

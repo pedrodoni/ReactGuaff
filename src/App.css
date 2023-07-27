@@ -111,6 +111,12 @@ li a{
     
    
 }
+.addCart{
+  margin-bottom: 2%;
+}
+h1{
+  text-align: center;
+}
 .imageDETAIL{
   display: flex;
   justify-content: center;
@@ -127,3 +133,35 @@ li a{
   justify-content: center;
   
 }
+.layoutHome{
+  display: flex;
+  justify-content: space-evenly;
+}
+.cardMenu{
+  margin: 5%;
+}
+.buttonCard{
+  display: flex;
+  justify-content: center;
+}
+.descCard{
+  display: flex;
+  justify-content: center;
+}
+.detailCard{
+  background-color: black;
+  border-radius: 0% 0% 25% 25%;
+}
+.imgCard2 img{
+  border-radius: 25% 25% 0% 0%;
+}
+.descCard h3{
+  color: white;
+}
+button a{
+  color: black;
+}
+.buttonGo{
+  margin-bottom: 5%;
+}
+
