@@ -111,6 +111,11 @@ li a{
     
    
 }
+.cartWid{
+  display: flex;
+  align-items: center;
+  margin-right:  2%;
+}
 .addCart{
   margin-bottom: 2%;
 }
