@@ -30,7 +30,7 @@ const products =[
                     resolve(products) 
                     setIsLoading(false)
                 }
-            },2000)
+            },1000)
         })
         
      } 
