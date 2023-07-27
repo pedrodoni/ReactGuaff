@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
     },[])
   return (
     <div >
-            {isLoading ? <Loading/>:loading}
+            {isLoading ? <Loading/>:loading()}
             <div className='cntCNT'>
             <ItemDetail alimento={alimento}/>
             </div>

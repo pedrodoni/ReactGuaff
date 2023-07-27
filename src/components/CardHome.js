@@ -6,11 +6,11 @@ import ItemListContainer from "./ItemListContainer/ItemListContainer";
         {id:1,  
         imgCard:"./images/catStore.png",
         desc:"Cat Food",
-        link: "cats" }  , {
+        link: "item/Cats" }  , {
         id:2,
         imgCard:"./images/dogStore.png",
         desc:"Dog Food",
-        link: "dogs" 
+        link: "item/Dogs" 
         
         }     
        ];
