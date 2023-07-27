@@ -13,7 +13,7 @@ function App() {
       <Route exact path="/" element={<CardHome />}/>
       <Route exact path="/item" element={<ItemListContainer tittle={'All Products'} />}/>
       <Route exact path="/item/:forId" element={<ItemListContainer tittle={'Food Store: '}/>}/>
-      <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
+      <Route exact path="/items/:id" element={<ItemDetailContainer />}/>
       <Route exact path="/dogs" element={<Navbar />}/>
     </Routes>
     </BrowserRouter>

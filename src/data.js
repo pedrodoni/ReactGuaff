@@ -39,7 +39,7 @@ const products =[
         return new Promise((resolve,reject)=>{
             setIsLoading(true)
             setTimeout(()=>{
-                resolve(products.find((aliemento)=> aliemento.id ===id))
+                resolve(products.find((alimento)=> alimento.id ===id))
                 setIsLoading(false)
 
             },2000)

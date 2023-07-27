@@ -11,7 +11,7 @@ const Item = ({PRDR}) => {
         <div className='cardDetails'>
             <h3 className='texDetails'>{PRDR.name}</h3>
             <h4><strong>${PRDR.price}</strong></h4>
-            <Link to={`/item/${PRDR.id}`}>
+            <Link to={`/items/${PRDR.id}`}>
             <Button variant='outline-light'>Info</Button>
             </Link>
         </div>
