@@ -1,16 +1,17 @@
-import React from 'react'
-import Swal from 'sweetalert2';
+import React, { useContext } from 'react'
 import ItemCount from '../ItemCount/ItemCount'
+import { CartContext } from '../../context/CartContext'
 
 
 const ItemDetail = ({alimento}) => {
+
+    const {addCarrito} = useContext(CartContext);
+
+
     const more = (items)=>{
-        if(items===0){
-            Swal.fire("Debes Elegir una cantidad valida")
-        } else{
-        Swal.fire(`Agregaste ${items} items a tu carrito`)
+      addCarrito(items, alimento);
         }
-    }
+    
     
   return (
     <div className='cntDETAIL'>
@@ -23,14 +24,17 @@ const ItemDetail = ({alimento}) => {
         </div>
         
         <div className='layoutDETAIL'>
+        <h3>${alimento.price}</h3>
+        
         <p>{alimento.desc}</p>
+
         </div>    
         <div className='addCart' >
             <ItemCount initial= {1} stock={alimento.stock} more={more}/>
         </div>
     </div>
     
-  )
-}
+  )}
+
 
 export default ItemDetail

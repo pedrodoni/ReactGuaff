@@ -25,7 +25,8 @@ function Navbar (){
                 </ul>
             </div>
             
-            <CartWidget/> 
+            <CartWidget/>
+            
         </div>
         
     )
