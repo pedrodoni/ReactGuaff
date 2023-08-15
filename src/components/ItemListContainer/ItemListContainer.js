@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from '../ItemList/ItemList';
 import Loading from '../Loading/Loading';
-import { drawProducts } from '../../data';
+
 import { useParams } from 'react-router-dom';
+import { getFirestore, collection, getDocs,query,where } from "firebase/firestore";
 
 
 
@@ -12,16 +13,29 @@ const[isLoading, setIsLoading]= useState(false)
 const {forId}= useParams()
 
 useEffect(()=>{
-    drawProducts(setIsLoading)
-    .then((res)=>{
+   const querydb = getFirestore();
+   const queryCollection = collection(querydb,'alimentos')
+   setIsLoading(true);
+   
+    setTimeout(()=>{
       if (forId){
-         setProductsDrawed(res.filter((alimento)=>alimento.for === forId))
+         
+         const queryFor = query(queryCollection,where('for','==',forId))
+   getDocs(queryFor)
+   .then(res=>setProductsDrawed(res.docs.map(alimento=>({id:alimento.id,...alimento.data()}))))
+   setIsLoading(false);
+
       }else{
-         setProductsDrawed(res)
+         getDocs(queryCollection)
+         .then(res=>setProductsDrawed(res.docs.map(alimento=>({id:alimento.id,...alimento.data()}))))
+         setIsLoading(false);
+
       }
-    }   )
-    .catch((ERR)=> console.log(ERR))
- },[forId])
+      
+   }, 1000 )
+  
+    },[forId] )
+      
  
    
     function loading(){
