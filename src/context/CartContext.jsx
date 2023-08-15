@@ -1,5 +1,6 @@
 
 import React, { createContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -28,6 +29,24 @@ const CartProvider = ({ children }) => {
       setCartArrray([...cartArray, newItem]);
     }
   };
+  const CheckOut = ({order}) => {
+    
+    return (
+        <div>
+           <div>
+            <h3>Información del Comprador:</h3>
+            <p><strong>Nombre:</strong> {order.buyer.name}</p>
+            <p><strong>Email:</strong> {order.buyer.email}</p>
+            <p><strong>Teléfono:</strong> {order.buyer.phone}</p>
+            </div>
+            
+            
+            
+            {clearCart()}
+            <Link to={'/item'}><h3>Seguir Comprando</h3></Link>
+        </div>
+      );
+}
   
 
   const DELETEItem = (id) => {
@@ -54,6 +73,7 @@ const CartProvider = ({ children }) => {
     DELETEItem,
     lenght,
     order,
+    CheckOut
         
    
 

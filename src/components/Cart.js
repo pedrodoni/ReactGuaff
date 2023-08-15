@@ -3,12 +3,12 @@ import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { serverTimestamp } from "firebase/firestore";
+// import { getFirestore,  } from "firebase/firestore";
 import saveOrder from "../components/NewOrder";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import CheckOut from "./CheckOut";
 
+import { collection , getFirestore, addDoc, Timestamp } from "firebase/firestore";
 
 
 
@@ -20,14 +20,10 @@ const Cart = () => {
 
 
   
-  const { cartArray, DELETEItem, lenght, clearCart,} = useContext(CartContext);
-  if (lenght === 0) {
-    return (
-      <h2>
-        El Carrito esta vacio,<Link to={"/item"}>Compre Aqui</Link>{" "}
-      </h2>
-    );
-  }
+  const { cartArray, DELETEItem, lenght, clearCart,CheckOut,setCartArrray,order } = useContext(CartContext);
+  
+ 
+  
 
 
   const buyOrder={
@@ -36,27 +32,44 @@ const Cart = () => {
       email :  "client@gmail.com",
       phone :  "3517464477"
     },
-   
-    items: cartArray.map(p=>({id:p.Item.id,  name: p.Item.name,price:p.Item.price, cantidad:p.Item.cantidad})),
     
+    items: cartArray.map(p=>({id:p.Item.id,  name: p.Item.name,price:p.Item.price, cantidad:p.cantidad})),
+
+
     
    };
-   const handlePurchase = async()=>{
-    const orderId= await saveOrder(buyOrder,clearCart);
-    if(orderId){
-      Swal.fire("Su nro de orden es: ", orderId);
-      setPurchase(true)
-    }else{
-      Swal.fire("Erro al solicitar la orden");
+   const handlePurchase = async () => {
+     const db = getFirestore();
+     const ordersCollection = collection(db, 'orders');
+     
+     try {
       console.log(buyOrder)
+      const docRef = await addDoc(ordersCollection, buyOrder);
+      Swal.fire("Orden agregada", `Su nro de orden es: ${docRef.id}`, "success");
+      setPurchase(true);
+    } catch (error) {
+      console.error("Error al agregar orden: ", error);
+      Swal.fire("Error", `Ocurrió un error al procesar la orden: ${error.message}`, "error");
     }
-   };
-  
-   if(purchase){
+  };
+ 
+  if(purchase=== true){
     return <CheckOut order={buyOrder}/>
+
    }
+  
+  if (lenght === 0) {
+    return (
+      <h2>
+        El Carrito esta vacio,<Link to={"/item"}>Compre Aqui</Link>{" "}
+      </h2>
+    );
+  }
+   
+  
 
   return (
+  
     <Card>
       <Container>
         <Row>
@@ -75,7 +88,8 @@ const Cart = () => {
         
         </Col>
         <Col>
-        <Button  onClick={handlePurchase}>Ordenar</Button>
+        <Button onClick={handlePurchase}>Ordenar</Button>
+
         </Col>
         <Col>
         <Button onClick={clearCart}>Vaciar Carrito</Button>
@@ -87,3 +101,4 @@ const Cart = () => {
   );
 };
 export default Cart;
+
