@@ -20,7 +20,7 @@ const Cart = () => {
 
 
   
-  const { cartArray, DELETEItem, lenght, clearCart,cartTotalPrice,setCartArrray,order } = useContext(CartContext);
+  const { cartArray, DELETEItem, lenght, clearCart,} = useContext(CartContext);
   if (lenght === 0) {
     return (
       <h2>
@@ -36,21 +36,23 @@ const Cart = () => {
       email :  "client@gmail.com",
       phone :  "3517464477"
     },
-    total: cartTotalPrice(),
-    items: cartArray.map(p=>({id:p.id,  name: p.name,price:p.price, cantidad:p.cantidad})),
-    date:serverTimestamp()
+   
+    items: cartArray.map(p=>({id:p.Item.id,  name: p.Item.name,price:p.Item.price, cantidad:p.Item.cantidad})),
+    
     
    };
    const handlePurchase = async()=>{
-    const orderId= await saveOrder(buyOrder,setCartArrray);
+    const orderId= await saveOrder(buyOrder,clearCart);
     if(orderId){
       Swal.fire("Su nro de orden es: ", orderId);
       setPurchase(true)
     }else{
       Swal.fire("Erro al solicitar la orden");
+      console.log(buyOrder)
     }
    };
-   if(purchase=== true){
+  
+   if(purchase){
     return <CheckOut order={buyOrder}/>
    }
 

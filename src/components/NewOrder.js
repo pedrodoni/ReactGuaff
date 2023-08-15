@@ -12,8 +12,9 @@ const saveOrder = async(buyOrder)=>{
         return docRef.id
     }
     catch (e){
-        console.error("eror al agregar una order ",e);
+        console.error("error al agregar una order ",e);
         return null
+        
     }
 }
 export default saveOrder

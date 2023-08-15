@@ -28,13 +28,7 @@ const CartProvider = ({ children }) => {
       setCartArrray([...cartArray, newItem]);
     }
   };
-  const cartTotalPrice = () => {
-    let total = 0;
-    cartArray.forEach(elem => {
-        total += elem.price * elem.quantity;
-    });
-    return total;
-}
+  
 
   const DELETEItem = (id) => {
     const refresh = cartArray.filter((item) => item.Item.id !== id);
@@ -60,7 +54,7 @@ const CartProvider = ({ children }) => {
     DELETEItem,
     lenght,
     order,
-        cartTotalPrice,
+        
    
 
   };

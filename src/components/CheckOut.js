@@ -1,14 +1,14 @@
 import { useContext } from "react";
 
 const CheckOut = ({order}) => {
-    const {removeList} = useContext()
+    const {clearCart} = useContext()
     return (
-        <div className="order-summary">
+        <div>
             <h2>Resumen de Compra</h2>
             <h3>Información del Comprador:</h3>
-            <p><strong>Nombre:</strong> {order.buyer.name}</p>
-            <p><strong>Email:</strong> {order.buyer.email}</p>
-            <p><strong>Teléfono:</strong> {order.buyer.phone}</p>
+            <p><strong>Nombre:</strong> {order.Item.name}</p>
+            <p><strong>Email:</strong> {order.Item.email}</p>
+            <p><strong>Teléfono:</strong> {order.Item.phone}</p>
 
             <h3>Productos:</h3>
             <ul>
@@ -20,7 +20,7 @@ const CheckOut = ({order}) => {
             </ul>
             
             <h3>Total: ${order.total}</h3>
-            {removeList()}
+            {clearCart()}
         </div>
     );
 }
