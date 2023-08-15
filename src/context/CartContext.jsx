@@ -1,10 +1,15 @@
+
 import React, { createContext, useState } from "react";
 import Swal from "sweetalert2";
 
+
+
+
 export const CartContext = createContext();
 const CartProvider = ({ children }) => {
-  const [cartArray, setCatArrray] = useState([]);
+  const [cartArray, setCartArrray] = useState([]);
   const lenght = cartArray.length;
+  
 
   const addCarrito = (items, alimento) => {
     if (items === 0) {
@@ -12,7 +17,7 @@ const CartProvider = ({ children }) => {
     } else {
       Swal.fire(`Agregaste ${items} items a tu carrito`);
     }
-    if (stay(items.id)) {
+    if (stay(alimento.id)) {
       Swal.fire("Este Producto ya se encuentra en el carrito");
     } else {
       const newItem = {
@@ -20,20 +25,32 @@ const CartProvider = ({ children }) => {
         cantidad: items,
       };
 
-      setCatArrray([...cartArray, newItem]);
+      setCartArrray([...cartArray, newItem]);
     }
   };
+  const cartTotalPrice = () => {
+    let total = 0;
+    cartArray.forEach(elem => {
+        total += elem.price * elem.quantity;
+    });
+    return total;
+}
 
   const DELETEItem = (id) => {
     const refresh = cartArray.filter((item) => item.Item.id !== id);
-    setCatArrray(refresh);
+    setCartArrray(refresh);
   };
   const clearCart = () => {
-    setCatArrray([]);
+    setCartArrray([]);
   };
   const stay = (id) => {
-    return cartArray.some((item) => item.id === id);
+    return cartArray.some((item) => item.Item.id === id);
   };
+  const order = ()=>{
+    setCartArrray([])
+    Swal.fire("Felicitaciones por su compra");
+  }
+
 
   const value = {
     cartArray,
@@ -42,6 +59,10 @@ const CartProvider = ({ children }) => {
     stay,
     DELETEItem,
     lenght,
+    order,
+        cartTotalPrice,
+   
+
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

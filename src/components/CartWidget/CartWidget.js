@@ -9,6 +9,7 @@ const CartWidget = () => {
   return (
     <div className="cartWid">
       {" "}
+      <Link to={"/cart"}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="icon icon-tabler icon-tabler-shopping-cart"
@@ -27,7 +28,7 @@ const CartWidget = () => {
         <path d="M17 17h-11v-14h-2" />
         <path d="M6 5l14 1l-1 7h-13" />
       </svg>
-      <Link to={"/cart"}>
+      
         <Badge>{lenght}</Badge>
       </Link>
     </div>
